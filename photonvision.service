@@ -1,0 +1,21 @@
+# place this file at /etc/systemd/systemd on the vision coprocessor
+# run sudo systemctl 
+[Unit]
+Description=Photonvision Server
+After=syslog.target network.target
+
+[Service]
+SuccessExitStatus=143
+
+User=oem
+Group=oem
+
+Type=simple
+
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
+WorkingDirectory=/home/oem/PhotonVision
+ExecStart=/usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar photonvision-v2024.2.2-linuxx64.jar
+ExecStop=/bin/kill -15 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
