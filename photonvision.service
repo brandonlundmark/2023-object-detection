@@ -8,16 +8,16 @@ After=syslog.target network.target
 SuccessExitStatus=143
 
 # update
-User=firebears
-Group=firebears
+User=oem
+Group=oem
 
 Type=simple
 
 Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64"
 # WorkingDirectory must contain the photonvision jar. Change the file path here to match the location the jar was placed.
-WorkingDirectory=/home/firebears/PhotonVision
+WorkingDirectory=/home/oem/PhotonVision
 # Update the jar filename here to exactly match the file in the PhotonVision directory
-ExecStart=/usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar photonvision-v2024.2.9-linuxx64.jar
+ExecStart=/usr/lib/jvm/java-11-openjdk-amd64/bin/java -jar photonvision.jar
 ExecStop=/bin/kill -15 $MAINPID
 
 [Install]
